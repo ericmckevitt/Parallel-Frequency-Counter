@@ -22,7 +22,8 @@ public class SerialFrequencyCounter {
         int[] frequency = new int[26];
 
         for (byte b : input) {
-            // Convert the character to an index
+            if (b < 'a' || b > 'z')
+                continue;
             int index = Character.toLowerCase(b) - 'a';
             frequency[index]++;
         }
