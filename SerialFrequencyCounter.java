@@ -16,8 +16,30 @@ public class SerialFrequencyCounter {
         }
     }
 
-    public static void main(String[] args) {
+    public static void countFrequencies(byte[] input) {
+
+        // Define a 26 element array to store the frequency of each letter
+        int[] frequency = new int[26];
+
+        for (byte b : input) {
+            // Convert the character to an index
+            int index = Character.toLowerCase(b) - 'a';
+            frequency[index]++;
+        }
+
+        // Print the frequency of each letter
+        for (int i = 0; i < frequency.length; i++) {
+            if (frequency[i] == 0)
+                continue;
+            System.out.println((char) (i + 'a') + ": " + frequency[i]);
+        }
+    }
+
+    public static void main(String[] args) throws IOException {
         String filename = args[0];
-        System.out.println("Reading file: " + filename);
+
+        byte[] input = parseInputFile(filename);
+
+        countFrequencies(input);
     }
 }
