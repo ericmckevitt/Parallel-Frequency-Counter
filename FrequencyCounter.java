@@ -20,5 +20,13 @@ public class FrequencyCounter {
         String filename = args[0];
 
         byte[] input = parseInputFile(filename);
+
+        int availableProcessors = Runtime.getRuntime().availableProcessors();
+        System.out.println("Available processors: " + availableProcessors);
+
+        int chunkSize = input.length / availableProcessors;
+        System.out.println("Chunk size: " + chunkSize);
+
+
     }
 }
